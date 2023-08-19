@@ -2,7 +2,7 @@ import logo from "./logo.png";
 import "./App.css";
 import React from "react";
 import AddProduct from "./Components/AddProduct";
-import SingleProduct from "./Components/SingleProduct";
+import SingleProduct from "./Components/EditProduct";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
