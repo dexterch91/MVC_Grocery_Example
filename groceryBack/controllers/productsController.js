@@ -30,6 +30,30 @@ class ProductsController extends BaseController {
       return res.status(400).json({ error: true, msg: err });
     }
   }
+
+  async updateOne(req, res) {
+    const id = req.params.productId; //get the product id
+    const { name, price } = req.body; //manage the post request
+    try {
+      const product = await this.model.findByPk(id); //find this product ID
+      if (product) { //if found, see if there's updates to be done based on req.body
+        await product.update({
+            name,
+            price,
+        });
+    } 
+    
+    else {
+      return res.status(404).json({ error: true, msg: 'Product not found. Test' });
+    }
+    return res.json(product);
+  } 
+    catch (err) {
+      console.log(err);
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+
 }
 
 module.exports = ProductsController;
